@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - uses: treebeardtech/treebeard@master
+      - uses: treebeardtech/treebeard@debug-cirq
         with:
           docker-username: "alextreebeard"
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
