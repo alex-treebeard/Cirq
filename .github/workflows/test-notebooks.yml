@@ -1,0 +1,16 @@
+on:
+  push:
+jobs:
+  run_treebeard_action:
+    runs-on: ubuntu-latest
+    name: Run treebeard Action
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: treebeardtech/treebeard@master
+        with:
+          docker-username: "alextreebeard"
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-image-name: "treebeardtech/cirq"  
