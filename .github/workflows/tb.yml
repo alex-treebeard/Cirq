@@ -1,0 +1,37 @@
+name: Treebeard
+
+on: [pull_request, push]
+
+jobs:
+  run_treebeard_action:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        notebook:
+          - 'docs/*.ipynb'
+          - 'docs/tutorials/*.ipynb'
+          - 'docs/tutorials/educators/*.ipynb'
+          - 'cirq/**/*.ipynb'
+    name: Test NBs
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: BSFishy/pip-action@v1
+        with:
+          packages: |
+            papermill
+            jupyter
+            seaborn
+      - uses: treebeardtech/treebeard@master
+        with:
+          use-docker: false
+          notebooks: |
+            ${{ matrix.notebook }}
+          ignore: |
+            **/google/*.ipynb
+            **/pasqal/*.ipynb
+            **/aqt/*.ipynb
+            examples/advanced/*.ipynb
+            examples/*fidelity*
