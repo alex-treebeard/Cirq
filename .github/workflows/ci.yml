@@ -14,16 +14,8 @@ jobs:
       - run: |
           pip install \
             seaborn \
-            pytest-xdist
-
-      - name: nbmake
-        uses: treebeardtech/nbmake-action@v0.2.1
-        with:
-          ignore: |
-            **/google/*.ipynb
-            **/pasqal/*.ipynb
-            **/aqt/*.ipynb
-            examples/advanced/*.ipynb
-            examples/*fidelity* 
-          extra-pytest-args: |
-             -n=auto 
+            pytest-xdist \
+            pytest \
+            nbmake==0.2
+      - run: |
+          pytest --nbmake -n=auto docs
