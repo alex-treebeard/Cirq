@@ -12,7 +12,9 @@ jobs:
           python-version: '3.7'
           architecture: 'x64'
       - run: |
-          pip install seaborn
+          pip install \
+            seaborn \
+            pytest-xdist
 
       - name: nbmake
         uses: treebeardtech/nbmake-action@v0.2.1
