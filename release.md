@@ -6,7 +6,7 @@ themselves are created. Note that development is done on the `master`
 branch, so if you want to use a more stable version you should use one
 of the [releases](https://github.com/quantumlib/Cirq/releases) or
 install from pypi using `pip install cirq`.  The release from the
-latest commit to master can be installed with `pip install cirq-unstable`.
+latest commit to master can be installed with `pip install --pre cirq`.
 
 ## Versioning
 
@@ -159,8 +159,7 @@ any high-risk features that have changed this release.
 
 ```bash
 mkvirtualenv "verify_test_${VER}" --python=/usr/bin/python3
-pip install -r requirements.txt -r cirq/contrib/contrib-requirements.txt -r dev_tools/conf/pip-list-dev-tools.txt
-pip install --index-url=https://test.pypi.org/simple/ cirq=="${VER}"
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple cirq=="${VER}"
 python -c "import cirq; print(cirq.__version__)"
 python  # just do some stuff checking that latest features are present
 ```
