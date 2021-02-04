@@ -14,12 +14,6 @@ jobs:
       - run: |
           pip install seaborn
 
-      - uses: treebeardtech/treebeard@master
-        with:
-          use-docker: false
-          notebooks: |
-            ${{ matrix.notebook }}
-
       - name: nbmake
         uses: treebeardtech/nbmake-action@v0.2.1
         with:
@@ -29,3 +23,5 @@ jobs:
             **/aqt/*.ipynb
             examples/advanced/*.ipynb
             examples/*fidelity* 
+          extra-pytest-args: |
+             -n=auto 
