@@ -15,9 +15,6 @@ jobs:
       - run: |
           pip install \
             -r requirements.txt \
-            -r dev_tools/conf/requirements-notebook-tests.txt \
-            pytest-xdist \
-            pytest \
-            nbmake==0.1
+            -r dev_tools/conf/requirements-notebook-tests.txt
       - run: | 
           pytest --nbmake -n=auto docs
