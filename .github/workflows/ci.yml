@@ -8,5 +8,9 @@ jobs:
     name: Notebook Tests (branch)
     runs-on: ubuntu-16.04
     steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
       - name: nbmake
         uses: treebeardtech/nbmake-action@v0.2.1
